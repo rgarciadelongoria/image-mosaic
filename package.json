@@ -1,0 +1,17 @@
+{
+  "name": "@rgarciadelongoria/image-mosaic",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/image-mosaic.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "echo 'No build step required for this simple component.'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rubén Garcia de Longoria <rgarciadelongoria@gmail.com> (https://longocode.com/)",
+  "license": "SEE LICENSE IN LICENSE"
+}
