@@ -1,7 +1,7 @@
 {
   "name": "@rgarciadelongoria/image-mosaic",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.4",
+  "description": "Simple image mosaic for the web.",
   "main": "src/image-mosaic.js",
   "private": false,
   "publishConfig": {
@@ -13,5 +13,9 @@
   },
   "keywords": [],
   "author": "Rubén Garcia de Longoria <rgarciadelongoria@gmail.com> (https://longocode.com/)",
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rgarciadelongoria/image-mosaic"
+  }
 }
