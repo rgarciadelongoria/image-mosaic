@@ -25,7 +25,7 @@ The default appearance of each mosaic depends on the number of images.
 
 ### Examples
 
-[jsfiddle DEMO](https://jsfiddle.net/rgarciadelongoria/sqe9jfc3/84/)
+[jsfiddle DEMO](https://jsfiddle.net/rgarciadelongoria/sqe9jfc3/)
 
 #### 4 pictures:
 
