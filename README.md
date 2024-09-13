@@ -12,7 +12,7 @@ npm i @rgarciadelongoria/image-mosaic
 
 Import file directly from unpkg URL.
 
-https://unpkg.com/@rgarciadelongoria/image-mosaic@0.0.5/src/image-mosaic.js
+https://unpkg.com/@rgarciadelongoria/image-mosaic@0.0.6/src/image-mosaic.js
 
 #### Method 3
 
@@ -25,7 +25,7 @@ The default appearance of each mosaic depends on the number of images.
 
 ### Examples
 
-[jsfiddle DEMO](https://jsfiddle.net/rgarciadelongoria/sqe9jfc3/81/)
+[jsfiddle DEMO](https://jsfiddle.net/rgarciadelongoria/sqe9jfc3/84/)
 
 #### 4 pictures:
 
