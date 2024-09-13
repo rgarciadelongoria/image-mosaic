@@ -1,1 +1,6 @@
-<iframe width="100%" height="300" src="//jsfiddle.net/rgarciadelongoria/sqe9jfc3/71/embedded/result/" frameborder="0" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+# image-mosaic
+## Web Component to display a mosaic of images
+
+With this component you can display from 1 to 4 mosaic of images.
+
+[demo](https://jsfiddle.net/rgarciadelongoria/sqe9jfc3/71/)
