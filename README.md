@@ -88,12 +88,13 @@ The default appearance of each mosaic depends on the number of images.
 
 ![Captura de pantalla 2024-09-13 a las 21 38 16](https://github.com/user-attachments/assets/38917d08-7f4c-4ad6-926d-7fefa67d7dad)
 
-````
+```html
 <image-mosaic
     image1="https://picsum.photos/id/152/400/400?styles=clip-path: polygon(0 0, 20% 0, 80% 100%, 0% 100%);"
     image2="https://picsum.photos/id/159/400/400?styles=clip-path: polygon(100% 0, 20% 0, 80% 100%, 100% 100%);"
-    image3="https://picsum.photos/id/175/400/400?styles=clip-path: polygon(10% 10%, 10% 90%, 25% 90%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 90%, 90% 90%, 90% 10%);>
+    image3="https://picsum.photos/id/175/400/400?styles=clip-path: polygon(10% 10%, 10% 90%, 25% 90%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 90%, 90% 90%, 90% 10%);">
 </image-mosaic>
+```
 
 
 
