@@ -6,23 +6,26 @@ class ImageMosaic extends HTMLElement {
       this.image2 = '';
       this.image3 = '';
       this.image4 = '';
-      this.backgroundPositionXUrl1 = 'center';
-      this.backgroundPositionYUrl1 = 'center';
-      this.backgroundPositionXUrl2 = 'center';
-      this.backgroundPositionYUrl2 = 'center';
-      this.backgroundPositionXUrl3 = 'center';
-      this.backgroundPositionYUrl3 = 'center';
+      this.clearStyles = false;
+      this.image1Styles = '';
+      this.image2Styles = '';
+      this.image3Styles = '';
+      this.image4Styles = '';
     }
     
     // component attributes
     static get observedAttributes() {
-      return ['image1', 'image2', 'image3', 'image4', 'gap'];
+      return ['image1', 'image2', 'image3', 'image4', 'clear-styles'];
     }
     
     // attribute change
     attributeChangedCallback(property, oldValue, newValue) {
-      if (oldValue === newValue) return;
-      this[ property ] = newValue;
+      if (property === 'clear-styles') {
+        this.clearStyles = newValue === 'true';
+      } else {
+        if (oldValue === newValue) return;
+        this[ property ] = newValue;
+      }
     }
     
     // connect component
@@ -44,10 +47,27 @@ class ImageMosaic extends HTMLElement {
     }
 
     getStyle() {
+      let customStyles = `
+        .image-wrapper {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+          border-radius: 18px;
+          overflow: hidden;
+        };
+      `;
+
+      console.log(this.clearStyles);
+
+      if (this.clearStyles) {
+        customStyles = '';
+      }
+
       let style = `
         .container.image1 {
           background-image: url(${this.image1});
-          background-position: ${this.backgroundPositionXUrl1} ${this.backgroundPositionYUrl1};
+          ` + this.image1Styles + `
         }
 
         .container.image2 {
@@ -68,13 +88,13 @@ class ImageMosaic extends HTMLElement {
         .container.image1 {
           clip-path: polygon(49% 100%, 49% 0, 0 0, 0 100%);
           background-image: url(${this.image1});
-          background-position: ${this.backgroundPositionXUrl1} ${this.backgroundPositionYUrl1};
+          ` + this.image1Styles + `
         }
 
         .container.image2 {
           clip-path: polygon(50% 100%, 50% 0, 100% 0, 100% 100%);
           background-image: url(${this.image2});
-          background-position: ${this.backgroundPositionXUrl2} ${this.backgroundPositionYUrl2};
+          ` + this.image2Styles + `
         }
 
         .container.image3 {
@@ -92,19 +112,19 @@ class ImageMosaic extends HTMLElement {
         .container.image1 {
           clip-path: polygon(0 0, 26% 0, 38% 100%, 0% 100%);
           background-image: url(${this.image1});
-          background-position: ${this.backgroundPositionXUrl1} ${this.backgroundPositionYUrl1};
+          ` + this.image1Styles + `
         }
 
         .container.image2 {
           clip-path: polygon(27% 0, 73% 0, 61% 100%, 39% 100%);
           background-image: url(${this.image2});
-          background-position: ${this.backgroundPositionXUrl2} ${this.backgroundPositionYUrl2};
+          ` + this.image2Styles + `
         }
 
         .container.image3 {
           clip-path: polygon(100% 0, 74% 0, 62% 100%, 100% 100%);
           background-image: url(${this.image3});
-          background-position: ${this.backgroundPositionXUrl3} ${this.backgroundPositionYUrl3};
+          ` + this.image3Styles + `
         }
 
         .container.image4 {
@@ -118,25 +138,25 @@ class ImageMosaic extends HTMLElement {
         .container.image1 {
           clip-path: polygon(0 0, 49% 0, 49% 49%, 0 49%);
           background-image: url(${this.image1});
-          background-position: ${this.backgroundPositionXUrl1} ${this.backgroundPositionYUrl1};
+          ` + this.image1Styles + `
         }
 
         .container.image2 {
           clip-path: polygon(100% 0, 50% 0, 50% 49%, 100% 49%);
           background-image: url(${this.image2});
-          background-position: ${this.backgroundPositionXUrl2} ${this.backgroundPositionYUrl2};
+          ` + this.image2Styles + `
         }
 
         .container.image3 {
           clip-path: polygon(0 100%, 0 50%, 49% 50%, 49% 100%);
           background-image: url(${this.image3});
-          background-position: ${this.backgroundPositionXUrl3} ${this.backgroundPositionYUrl3};
+          ` + this.image3Styles + `
         }
 
         .container.image4 {
           clip-path: polygon(100% 100%, 100% 50%, 50% 50%, 50% 100%);
           background-image: url(${this.image4});
-          background-position: ${this.backgroundPositionXUrl4} ${this.backgroundPositionYUrl4};
+          ` + this.image4Styles + `
         }
       `;
       }
@@ -162,47 +182,52 @@ class ImageMosaic extends HTMLElement {
             padding: 0;
           }
           ` +
-          style + `
-          .image-wrapper {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-          }
+          style +
+          customStyles + 
+          `
         </style>
       `;
     }
 
     getUrlParameters() {
-      try {
-        const url1 = new URL(this.image1);
-        const paramsUrl1 = url1.searchParams;
-        this.backgroundPositionXUrl1 = paramsUrl1.get('backgroundPositionX') || 'center';
-        this.backgroundPositionYUrl1 = paramsUrl1.get('backgroundPositionY') || 'center';
-      } catch (error) {}
-  
-      try {
-        const url2 = new URL(this.image2);
-        const paramsUrl2 = url2.searchParams;
-        this.backgroundPositionXUrl2 = paramsUrl2.get('backgroundPositionX') || 'center';
-        this.backgroundPositionYUrl2 = paramsUrl2.get('backgroundPositionY') || 'center';
-      } catch (error) {}
-  
-      try {
-        const url3 = new URL(this.image3);
-        const paramsUrl3 = url3.searchParams;
-        this.backgroundPositionXUrl3 = paramsUrl3.get('backgroundPositionX') || 'center';
-        this.backgroundPositionYUrl3 = paramsUrl3.get('backgroundPositionY') || 'center';
-      } catch (error) {}
-  
-      try {
-        const url4 = new URL(this.image4);
-        const paramsUrl4 = url4.searchParams;
-        this.backgroundPositionXUrl4 = paramsUrl4.get('backgroundPositionX') || 'center';
-        this.backgroundPositionYUrl4 = paramsUrl4.get('backgroundPositionY') || 'center';
-      } catch (error) {}
+      const processUrl = (image) => {
+        try {
+          const url = new URL(image, window.location.href); // Si es relativa, la mantiene relativa a la ubicación actual
+          const params = url.searchParams;
+          return {
+            url: url.origin + url.pathname,
+            styles: params.get('styles') || ''
+          };
+        } catch (error) {
+          // Si falla, simplemente retorna la imagen tal como está
+          return { url: image, styles: '' };
+        }
+      };
+    
+      // Procesa cada imagen
+      if (this.image1) {
+        const result1 = processUrl(this.image1);
+        this.image1 = result1.url;
+        this.image1Styles = result1.styles;
+      }
+    
+      if (this.image2) {
+        const result2 = processUrl(this.image2);
+        this.image2 = result2.url;
+        this.image2Styles = result2.styles;
+      }
+
+      if (this.image3) {
+        const result3 = processUrl(this.image3);
+        this.image3 = result3.url;
+        this.image3Styles = result3.styles;
+      }
+
+      if (this.image4) {
+        const result4 = processUrl(this.image4);
+        this.image4 = result4.url;
+        this.image4Styles = result4.styles;
+      }
     }
   }
   
