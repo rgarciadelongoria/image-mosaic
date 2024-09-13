@@ -33,9 +33,8 @@ h1, h2, p {
 pre {
     background-color: #353535;
     border-radius: 8px;
-    margin: 0;
     padding: 8px;
-    width: 600px;
+    width: calc(100% - 16px);
     overflow: auto;
 }
 
